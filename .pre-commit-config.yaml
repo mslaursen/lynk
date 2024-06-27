@@ -7,7 +7,7 @@ repos:
       - id: check-ast
         files: "(server/src.*)|(server/tests.*)"
       - id: trailing-whitespace
-        files: "(server/.*)|(server/tests.*)"
+        files: "(server/src.*)|(server/tests.*)"
 
   - repo: local
     hooks:
