@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  pg-db:
+    image: "postgres:15.2-bullseye"
+    hostname: pg-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: "server_api"
+      POSTGRES_USER: "server_api"
+      POSTGRES_PASSWORD: "server_api"
+    volumes:
+      - server-api-pg-data:/var/lib/postgresql/data
+    restart: always
+    healthcheck:
+      test: pg_isready -U server_api
+      interval: 2s
+      timeout: 3s
+      retries: 40
+
+volumes:
+  server-api-pg-data:
